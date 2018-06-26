@@ -1,11 +1,11 @@
 var coins = {
-  'p': 1,
-  'n': 5,
+  'q': 25,
   'd': 10,
-  'q': 25
+  'n': 5,
+  'p': 1
 };
 
-var coinTypes = ['p', 'n', 'd', 'q'];
+var coinTypes = ['q', 'd', 'n', 'p'];
 
 module.exports = {
   getAmount: function(coinType) {
@@ -20,5 +20,20 @@ module.exports = {
     else {
       return coins[coinType];
     }
+  },
+
+  convertToChange: function(number){
+    var converted = [];
+    while (number != 0) {
+      if (number < 0) throw new Error('Oops!');
+      for (coinType of coinTypes) {
+        if (number - this.getAmount(coinType) >= 0) {
+          number -= coins[coinType];
+          converted.push(coinType);
+          break;
+        }
+      }
+    }
+    return converted;
   }
 };
