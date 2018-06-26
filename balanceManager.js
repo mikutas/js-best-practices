@@ -2,7 +2,7 @@ var balance = 0;
 
 module.exports = {
   isValidAmount: function(amount){
-    if(!amount){
+    if(amount === null || amount === undefined){
       return false;
     } else {
       return true;

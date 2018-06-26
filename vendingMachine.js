@@ -1,4 +1,3 @@
-
 var balanceManager = require('./balanceManager');
 var changeHandler = require('./changeHandler');
 var productInventory = require('./productInventory');
@@ -19,6 +18,9 @@ module.exports = {
     var product = productInventory.getProduct(productId);
     balanceManager.decreaseBalance(product.price);
     return product;
-  }
+  },
 
+  getProducts: function(){
+    return productInventory.getProducts();
+  }
 };
